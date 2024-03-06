@@ -1,0 +1,126 @@
+# 컴퓨터네트워크 1주차
+
+## 들어가보자
+
+### 인터넷이란 무엇인가?
+
+- 인터넷을 구성하는 요소들로 살펴보기 (HW적인) : 1장에서는 4가지 구성요소 (Host, Packet switches, Communication links, Networks) 로 네트워크를 설명하고 있음
+- 분산 애플리케이션에 서비스를 제공하는 인프라스트럭쳐로 살펴보기 (SW적인) : 내가 앱을 만들면 서버를 만들어야 하는데, 이 서버를 어떻게 만들어야 하는지에 대한 내용 (계층상에서는 Application Layer에 해당)
+  - 응용 서비스를 만들고자 할 때 데이터가 필요함. 어디서 가져와보면 좋을까? - 공공데이터 포털 (data.go.kr) 등을 활용하면 좋음
+
+### 프로토콜이란 무엇인가?
+
+한 학기 내내 여러가지 프로토콜에 대해 접하게 될 것임
+
+**프로토콜이란?** 개체 간에 이루어지는 데이터 통신을 제어하는 규칙들의 집합
+
+- 프로토콜의 주요 요소 3가지
+
+  - Syntax : 데이터의 형식 (ex. IP라면 IP의 형식, 헤더 구성 등)
+  - Semantics : 데이터의 의미
+  - Timing : 데이터의 순서, 속도 등
+
+- TCP/IP Layer는 5가지로 나눔. 어떤 Protocol이 있는지?
+  - Application Layer : E-mail, Web, FTP, Telnet, ...
+  - Transport Layer : TCP, UDP
+  - Network Layer : IP, routing protocols
+  - Link Layer : Ethernet, WiFi
+  - Physical Layer
+
+이번 학기에서는 위 3개 레이어에 대해 다룰 예정
+
+## Chapter 1. Inroduction
+
+Chapter Goal : Get "feel", "big picture" - introduction to terminology
+
+Overview/roadmap
+
+-
+
+### 인터넷 : 구성요소 (a nuts and bolts)
+
+- Hosts : end systems (외곽에 있는 장치들)
+  - 5개의 계층을 모두 다 가지고 있음. 응용 서비스들이 동작하고 있음
+- Packet Switches : forward packets (패킷을 전달하는 장치들)
+  - 라우터, 스위치 등
+  - 패킷은? chunks of data
+- Communication Links : fiber, copper, radio, satellite
+  - 전송률(throughput) / 대역폭(bandwidth) 등을 고려해야 함
+- Networks : collection of devices and links
+
+거의 대부분의 장치들이 인터넷을 통해 연결되어 있음 (ex. IP카메라, 게이밍 디바이스, AR 장비, 심지어 자동차까지)
+
+Internet에서 `I` 는 대문자로 표현해야 함. 심지어 문장 중간에 들어가더라도
+
+인터넷 표준
+
+- RFC : 표준화된 문서들에 부여되는 문서 번호
+- [IETF](https://www.ietf.org/standards)
+
+RFC 문서를 보면 정말 건조하고 재미없고 불친절하게 쓰여 있음. 하지만 이게 표준이기 떄문에 이걸 따라야 함
+
+서버랑 클라이언트가 소켓을 통해서 네트워크에 접속하고 받고 함 - 이거는 2장에서 이야기함
+
+### 프로토콜이란?
+
+- 뭔가 사람들이 정한 규칙/규약
+- 프로토콜의 주요 요소
+  - Syntax : 데이터의 형식
+  - Semantics : 데이터의 의미
+  - Timing : 데이터의 순서, 속도 등
+
+네트워크를 3가지로 접근함
+
+- Edge
+- Access Network
+
+### Access networks and physical media
+
+어떻게 Edge Host를 네트워크에 연결하기 위한 방법 - Access Network (ex. WiFi, Ethernet, DSL, Cable, Fiber)
+
+- 가장 전통적인 Access Network 구성법 : DSL (Digital Subscriber Line) : 전화선 가지고 인터넷을 접속하는 것.
+  - 당시에는 전화선의 품질이 별로 안 좋아서 전화국 반경 2km 정도까지만 망을 구축했는데, 이 망을 가지고 인터넷 접속을 함. (음성 신호와 데이터를 하나의 라인을 사용)
+  - DSLAM이라는 장비가 있는데 이건 DSL 을 통해서 들어오는 신호를 전화/데이터로 분리하여 전화는 전화 네트워크로, 데이터는 ISP로 보내는 역할
+- Cable : 케이블 TV 네트워크를 사용하는 것.
+  - Cable Headend : 케이블 네트워크에서의 DSLAM 역할. 중계 장치 역할이라고 보면 됨. TV 신호나 인터넷 신호 등을 받아서 각각의 네트워크로 보내주는 역할. 케이블 네트워크에서는 콘텐츠를 Delivery하기 위해서 매우 중요하다.
+  - Cable에서는 하나의 케이블을 여러 집들이 공유하고 있음.
+  - FDM (Frequency Division Multiplexing) : 주파수를 나눠서 여러 채널을 만들어서 여러 채널을 동시에 전송하는 방식 (ex. 저주파는 TV, 고주파는 데이터 -> **왜?**)
+  - DOCSIS (Data Over Cable Service Interface Specification) : 케이블 네트워크에서 데이터를 전송하기 위한 표준 (여기에 보면 100mbps, 200mbps 이정도 수준으로 나와있음) - 그래서 기가단위로 가려면 광케이블로 가야함
+- HFC (Hybrid Fiber Coax) : 케이블 네트워크에서는 케이블을 통해서 집에 전달하고, 집 안에서는 광섬유로 전달함. (케이블은 광섬유로 전환되어서 집에 전달됨)
+
+### Home Networks
+
+홈 네트워크는 복합적인 구성을 가지고 있음. (ex. WiFi, Ethernet, ...)
+
+보통 '공유기'라고 불리는 장비가 네트워크에 접속할 수 있도록 하는 모든 장비를 포함 - AP, Router, Modem 등
+
+- WLAN (Wireless LAN) : 보통 WiFi를 말함. 802.11이라는 표준을 따르고 있음. 거리는 100ft(30m) 정도, 속도는 100Mbps 내외
+- 802.11a/b/g/n/ac/ax : 각각의 표준에 따라서 속도, 주파수 대역 등이 다름
+
+저거보다 더 큰 영역을 차지하는게 Wide-area cellular network (ex. LTE, 5G) - 이동통신 기반의 네트워크 (이건 6장 정도에서 다룸)
+
+4g 넘어오면서 음성/데이터를 하나로 통합함
+
+데이터 센터도 하나의 Access Networks 부류에 속한다 (ex. Amazon Case - 전자 상거래를 위한 각종 페이지들 / 아마존의 데이터를 처리하기 위한 병렬 컴퓨팅 / 퍼블릭 클라우드 서비스 (AWS) 제공)
+
+우리가 결국 인터넷을 쓸 때 최종적을 사용하는 프로토콜은 HTTP인데, 이 프로토콜을 계속해서 개선하기 위해서 구글이 열심히 하고 있음. (ex. QUIC)
+
+## Network Core
+
+라우터들의 집합 - 라우터가 어떻게 데이터를 처리하는가?
+
+라우터들이 하는 일을 크게 두 가지로 나누어보면 Packet Switching과 Circuit Switching이 있는데, 여기서는 Packet Switching에 대해서만 다룸
+
+### Packet Switching
+
+패킷 스위칭을 수행하는 장치들은 라우터, 스위치 등이 있음
+
+Two key network-core functions
+
+- Forwarding : move packets from router's input to appropriate router output
+  - 패킷을 받아서 어느 쪽으로 내보내야 목적지로 도착할 수 있을까? 를 판단하는 것. (목적지 주소를 보고 가려면 어떻게 해야할까?)
+  - 그걸 판단하는 Table이 있을건데, 이걸 어떻게 만들어야 할까? (Routing이 이걸 만드는 것)
+- Routing : determine route taken by packets from source to destination
+  - 라우팅은 라우터가 함
+  - 라우터들끼리 정보를 주고 받으면서 라우팅 프로토콜/알고리즘을 통해서 패킷을 어디로 보내야할지 결정함
+  - 그걸 **라우팅 테이블**이라고 함

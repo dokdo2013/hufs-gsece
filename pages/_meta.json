@@ -1,15 +1,7 @@
 {
   "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
-  "about": {
-    "title": "About",
-    "type": "page"
-  },
-  "contact": {
-    "title": "Contact ↗",
-    "type": "page",
-    "href": "https://twitter.com/shuding_",
-    "newWindow": true
-  }
+  "computer-network": "[24-1] 컴퓨터네트워크",
+  "it-ethics": "[24-1] 정보통신 윤리",
+  "edu-history": "[24-1] 교육철학및교육사",
+  "edu-intro": "[24-1] 교육학개론"
 }

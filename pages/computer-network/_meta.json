@@ -1,4 +1,11 @@
 {
   "overview": "Overview",
-  "class01": "1. Introduction"
+  "chapter01": "1. 컴퓨터 네트워크와 인터넷",
+  "chapter02": "2. 애플리케이션 계층",
+  "chapter03": "3. 트랜스포트 계층",
+  "chapter04": "4. 네트워크 계층: 데이터 평면",
+  "chapter05": "5. 네트워크 계층: 제어 평면",
+  "chapter06": "6. 링크 계층와 근거리 네트워크",
+  "chapter07": "7. 무선 및 이동 네트워크",
+  "chapter08": "8. 컴퓨터 네트워크 보안"
 }

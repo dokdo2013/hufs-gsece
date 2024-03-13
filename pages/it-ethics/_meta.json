@@ -1,4 +1,16 @@
 {
   "overview": "Overview",
-  "class01": "1. Introduction"
+  "chapter01": "1. 인터넷 윤리의 개념",
+  "chapter02": "2. 인터넷 예절, 네티켓",
+  "chapter03": "3. 정보격차",
+  "chapter04": "4. 웹 접근성",
+  "chapter05": "5. 유해 정보",
+  "chapter06": "6. 저작권",
+  "chapter07": "7. 사이버 중독",
+  "chapter08": "8. 전자상거래와 전자정부",
+  "chapter09": "9. 개인 정보 관리",
+  "chapter10": "10. 개인 정보 침해와 보호 조치",
+  "chapter11": "11. 보안 및 보안 솔루션",
+  "chapter12": "12. 사이버 범죄",
+  "chapter13": "13. 금융 보안"
 }

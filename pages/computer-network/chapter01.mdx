@@ -1,4 +1,8 @@
-# 컴퓨터네트워크 1주차
+import { Callout } from "nextra/components";
+
+# Chapter 1. 컴퓨터 네트워크와 인터넷
+
+<Callout>2024년 3월 6일 (수) 18:30 ~ 20:00</Callout>
 
 ## 들어가보자
 
@@ -15,11 +19,9 @@
 **프로토콜이란?** 개체 간에 이루어지는 데이터 통신을 제어하는 규칙들의 집합
 
 - 프로토콜의 주요 요소 3가지
-
   - Syntax : 데이터의 형식 (ex. IP라면 IP의 형식, 헤더 구성 등)
   - Semantics : 데이터의 의미
   - Timing : 데이터의 순서, 속도 등
-
 - TCP/IP Layer는 5가지로 나눔. 어떤 Protocol이 있는지?
   - Application Layer : E-mail, Web, FTP, Telnet, ...
   - Transport Layer : TCP, UDP
@@ -29,13 +31,9 @@
 
 이번 학기에서는 위 3개 레이어에 대해 다룰 예정
 
-## Chapter 1. Inroduction
+## Inroduction
 
-Chapter Goal : Get "feel", "big picture" - introduction to terminology
-
-Overview/roadmap
-
--
+**Chapter Goal** : Get "feel", "big picture" - introduction to terminology
 
 ### 인터넷 : 구성요소 (a nuts and bolts)
 
@@ -52,7 +50,7 @@ Overview/roadmap
 
 Internet에서 `I` 는 대문자로 표현해야 함. 심지어 문장 중간에 들어가더라도
 
-인터넷 표준
+### 인터넷 표준
 
 - RFC : 표준화된 문서들에 부여되는 문서 번호
 - [IETF](https://www.ietf.org/standards)
@@ -125,9 +123,7 @@ Two key network-core functions
   - 라우터들끼리 정보를 주고 받으면서 라우팅 프로토콜/알고리즘을 통해서 패킷을 어디로 보내야할지 결정함
   - 그걸 **라우팅 테이블**이라고 함
 
-```
-여기서부터 이틀차
-```
+<Callout>2024년 3월 13일 (수) 18:30 ~ 20:00</Callout>
 
 ### Packet-switching : store-and-forward
 
@@ -148,7 +144,7 @@ Two key network-core functions
 
 **Router** D(Q) - 자원에 비해 패킷이 순간적으로 많이 몰리거나 하면 큐잉이 발생함. 패킷이 몰려온다고 해서 얘네를 버릴 수는 없잖아. 예를 들어 들어오는 회선이 100mbps로 쏟아져들어오는데, 나는 10mbps로 밖에 못보내는데, 그럼 어떻게 해야할까? - 큐잉 딜레이가 발생함. - 얘는 누구에 의존하냐? 외부에서 들어오는 패킷의 속도에 의존함. (네트워크의 트래픽에 의존함) -> 예상할 수가 없음.
 
-총 소요시간 : D(Trans) _ 2 + D(Prop) _ 2 + D(Proc) = 10ms + 5ms + 0.1ms = 15.1ms
+총 소요시간 : D(Trans) \* 2 + D(Prop) \* 2 + D(Proc) = 10ms + 5ms + 0.1ms = 15.1ms
 
 Transmition Delay가 많이 언급이 되고, Queueing Delay는 가장 예측하기 어렵다.
 
@@ -215,7 +211,7 @@ Question : 전 세계의 access net들이 있을건데, 얘네를 어떻게 연�
 - Queueing Theory (대기 이론) : 학부에서는 안 다루고, 대학원에서 한 학기과정으로 다루기도 함 - 딜레이값이 얼마나 될지를 구하고 계산하고 하는 것
   - 대표 저서 : Kleinrock의 Queueing Systems (책 70p에 인터뷰가 있음)
 
-링크를 쓰는 부하 : traffic intensity = La/R (L : 패킷의 길이, a : 패킷의 도착율, R : 링크의 전송률)
+트래픽 부하 : traffic intensity = La/R (L : 패킷의 길이, a : 패킷의 도착율, R : 링크의 전송률)
 
 - La/R < 1 : 링크가 유휴 상태 (0에 가까우면 큐잉 딜레이가 작으니까 좋지)
 - La/R > 1 : 링크가 포화 상태 (1에 가까워질 수록 큐잉 딜레이가 늘어난다 -> 얼마나? 지수적으로) -> 1에 가까워지면 큐잉 딜레이가 무한대로 가게 된다.
@@ -258,7 +254,7 @@ traceroute는 어떻게 만들지?
 - Throughput은 minium 값으로 측정하는 것이 좋다. (bottleneck link)
 - 보통은 Access part가 bottleneck이 된다.
 
-### Security
+## Security
 
 보안은 8장에 있는데, 이쪽에서는 그냥 잠깐 훑어지나가는 정도로 되어 있음.
 
@@ -271,16 +267,11 @@ traceroute는 어떻게 만들지?
 여기서는 공격 패턴만 몇 가지 살펴보자
 
 - Packet "Sniffing" : 엿듣기
-
-와이어샤크 같은 프로그램을 쓰면 패킷을 엿듣을 수 있다. (그래서 패킷을 암호화해서 보내는 것이 중요하다)
-
+  - 와이어샤크 같은 프로그램을 쓰면 패킷을 엿듣을 수 있다. (그래서 패킷을 암호화해서 보내는 것이 중요하다)
 - IP Spoffing : IP 주소를 변조해서 보내는 것
-
 - DoS (Denial of Service) : 서비스 거부 공격
-
   - TCP의 3-way handshake를 이용해서 공격하는 것 (Call setup request를 무지막지하게 보내면 ACK를 보낸다)
   - DNS같은 경우는 UDP를 사용함. TCP를 쓰면 이런 공격에 취약해서?
-
 - Lines of Defense
   - Authentication (종단점인증) : 내가 누군가와 통신을 하고 있는데, 그 사람이 진짜 그 사람인지 확인하는 것 (IPSec 같은걸 보면 종단점을 확인하는 과정을 거친다)
   - Confidentiality (기밀성) : 아무나 살펴볼 수 없게 암호화를 하는 것
@@ -297,8 +288,6 @@ traceroute는 어떻게 만들지?
 왜 5개, 7개의 계층 같은 걸로 나눴는가?
 
 공항 서비스의 사례를 보면, 여러 서비스들을 계층으로 분리해서 제공한다.
-
-같은 계층에서 Peer to Peer 로
 
 계층을 나누면 또 좋은 점 - 계층별로 인터페이스만 잘 짜두고 관리하면 유지보수하기에도 좋고 하다
 
